@@ -36,10 +36,11 @@ public class LogInClienti {
 			ResultSet leggiTab;
 			leggiTab=statement.executeQuery("SELECT * FROM clienti  WHERE email =" + userEmail);
 			
-			if(leggiTab != null)
+			if(leggiTab != null) {}
 			if(leggiTab ==null) {
 				System.out.println("Utente non registrato, procedere alla registrazione.\n\nInserisci la tua email: ");
 				
+				//RIPORVIAMO!!!!
 			}
 			
 		} catch (SQLException e) {
