@@ -15,7 +15,7 @@ public class MainGastron {
 		listaDaCuocere.add(cibo1);
 		listaDaCuocere.add(cibo2);
 		listaDaCuocere.add(cibo3);
-	*/
+	*/System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
 		   Ordini ordini = new Ordini();
 		ordini.FaiOrdine();
 }
