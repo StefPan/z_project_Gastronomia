@@ -16,6 +16,25 @@ public class MainGastron {
 		listaDaCuocere.add(cibo2);
 		listaDaCuocere.add(cibo3);
 	*/System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	v
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	v
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	v
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	v
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	System.out.println( "MUAHAHAHAAHAHAHAAHAHAHAHAH ");
+	
 		   Ordini ordini = new Ordini();
 		ordini.FaiOrdine();
 }
