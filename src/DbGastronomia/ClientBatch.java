@@ -1,4 +1,5 @@
-package it.db.gastronmia;
+package DbGastronomia;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;

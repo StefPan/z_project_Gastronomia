@@ -1,4 +1,4 @@
-package it.db.gastronmia;
+package DbGastronomia;
 
 public class Singleton {
 

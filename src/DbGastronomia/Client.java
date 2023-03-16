@@ -1,4 +1,5 @@
-package it.db.gastronmia;
+package DbGastronomia;
+
 
 import java.util.ArrayList;
 import java.util.List;
