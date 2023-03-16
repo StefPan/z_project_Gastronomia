@@ -1,12 +1,22 @@
 package DbGastronomia;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class ClientBatch {
 	
@@ -42,21 +52,21 @@ public class ClientBatch {
 	}
 
 
-
+	 /*dichiaro variavile di tipo Connection, 
+	  * Nel try creo connessione con DriveManager,
+	  * creo prestatement "insert into.. value(?,?,?);";
+	  * assegno valori con
+	  * 		 for(){ prestat.setString(index, nome), 
+	  * 			prestat.addBatch;
+	  * eseguo batch
+	  * chiudo prestat e connessione
+	  * scrivo i catch.	
+	  * */
+	/* E ora vai nel MainDb e richiamalo =) */
 
 	public static void populateClientBatch() throws SQLException{
  
-		 /*dichiaro variavile di tipo Connection, 
-		  * Nel try creo connessione con DriveManager,
-		  * creo prestatement "insert into.. value(?,?,?);";
-		  * assegno valori con
-		  * 		 for(){ prestat.setString(index, nome), 
-		  * 			prestat.addBatch;
-		  * eseguo batch
-		  * chiudo prestat e connessione
-		  * scrivo i catch.	
-		  * */
-		/* E ora vai nel MainDb e richiamalo =) */
+		
 			Connection connection = null;
 	 
 			try {
@@ -69,6 +79,7 @@ public class ClientBatch {
 					prestat.setString(1, nome[i]);
 					prestat.setString(2, cognome[i]);
 					prestat.setString(3, indirizzo[i]);
+					
 					prestat.setInt(4,cap[i]);
 					prestat.setString(5, citta[i]);
 					prestat.addBatch();
@@ -82,7 +93,7 @@ public class ClientBatch {
 				ResultSet leggoTable = statement.executeQuery("SELECT * FROM clienti;");
 				
 				while(leggoTable.next()) {
-					System.out.println("Ciente: Nome: "+ leggoTable.getString("nome")+""
+					System.out.println("Cliente: Nome: "+ leggoTable.getString("nome")+""
 						+ " Cognome: " + leggoTable.getString("cognome") + ""
 						+ " Indirizzo: " + leggoTable.getString("indirizzo")+ "Cap: " + leggoTable.getInt("Cap")
 						+ " Città: " + leggoTable.getString("citta"));
@@ -92,9 +103,10 @@ public class ClientBatch {
 			
 				
  
-			} finally {}
+			} catch  (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
 
 
 }	

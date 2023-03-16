@@ -1,6 +1,7 @@
 package DbGastronomia;
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 import z_project_Gastronomia.Ordini;
 
 public class MainDb {
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException, IOException {
 		    //Ufo unicode
 	        System.out.println("\uD83D\uDC7D");
 	        
@@ -23,6 +24,12 @@ public class MainDb {
 	        listaClienti.add(client2);
 	        listaClienti.add(client3);
 	*/    
+	        //popolo classe da file:
+	        Client cliente= new Client();
+	        List<Client> listaClienti=new ArrayList<>();
+	        listaClienti=cliente.getClientFromFile();
+	        Client.populateClientBatchFromFile(listaClienti);
+	        
 	        
 	       GestioneCliente gestioneCliente = new GestioneCliente();
 	        Ordini ordine = new Ordini();
@@ -54,7 +61,7 @@ public class MainDb {
 		
 		*/
 		   
-	        
+	     //ricorda anche di fare i controlli su inserimento carne insalata ecc.. il camilcaseecc   
 	        
 	        
 	        
