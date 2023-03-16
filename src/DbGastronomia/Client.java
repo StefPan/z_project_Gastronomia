@@ -80,4 +80,7 @@ public class Client {
 		List<Client>listaClienti = new ArrayList<>();
 		listaClienti.add(cliente);
 	}
+
+
+
 }

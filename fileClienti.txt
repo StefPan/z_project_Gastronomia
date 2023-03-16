@@ -1,0 +1,5 @@
+Stefania,  Panella, Via Faenza 12, stefaia@gmail.com, ciaoBelli, 51030, Pistoia,
+Alessio, Mati, Via Fiorelli 23, alessio@gmailcom, ciaovelli, 59100, Prato,
+Luca, Ciotti, Via giottini 4, giovvili@gmailcom, chiatti32, 59100, Prato,
+Daniele, Bettini, Via Fiorentina 5, daniele@gmail.com, giorr99, 59120, Firenze,
+Stefano, Fiorello, Via Dante 6, stefano@gmail.com, kgtr43, 50126, Firenze,

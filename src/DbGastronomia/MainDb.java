@@ -24,13 +24,17 @@ public class MainDb {
 	        listaClienti.add(client3);
 	*/    
 	        
-	       GestioneCliente logIn = new GestioneCliente();
+	       GestioneCliente gestioneCliente = new GestioneCliente();
+	        Ordini ordine = new Ordini();
 	        
+	       //faccio il login, che in automatico richiama il metodo subscribe 
+	       gestioneCliente.logIn();
 	        
-	        
-	       logIn.logIn();
-	        
-	        
+	       //faccio l'ordine 
+	        ordine.faiOrdine();
+	        //richiamo metodo check indirizzo
+	        gestioneCliente.checkAddress();
+	     
 	        
 	        
 	        /*
