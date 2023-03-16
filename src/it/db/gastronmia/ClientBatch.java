@@ -55,7 +55,7 @@ public class ClientBatch {
 		  * chiudo prestat e connessione
 		  * scrivo i catch.	
 		  * */
-		/* E ora vai nel Main e richiamalo =) */
+		/* E ora vai nel MainDb e richiamalo =) */
 			Connection connection = null;
 	 
 			try {

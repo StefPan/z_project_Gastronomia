@@ -17,6 +17,6 @@ public class MainGastron {
 		listaDaCuocere.add(cibo3);
 	*/
 		   Ordini ordini = new Ordini();
-		ordini.FaiOrdine();
+	//	ordini.FaiOrdine();
 }
 }

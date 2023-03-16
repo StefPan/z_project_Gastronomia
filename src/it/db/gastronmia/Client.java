@@ -9,15 +9,20 @@ public class Client {
 	private String name;
 	private String surname;
 	private String address;
+	private String userName;
+	private String password;
 	private Integer cap;
 	private String city;
 	
+	public Client() {};
 	
-	public Client(Integer idClient, String name, String surname, String address, Integer cap, String city) {
+	public Client(Integer idClient, String name, String surname, String address,String userName, String password, Integer cap, String city) {
 		this.idClient = idClient;
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
+		this.userName= userName;
+		this.password= password;
 		this.cap = cap;
 		this.city = city;
 	}

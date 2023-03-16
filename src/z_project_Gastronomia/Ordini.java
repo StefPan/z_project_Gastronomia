@@ -39,7 +39,7 @@ public class Ordini {
 		return "Prodotto: " + nome + " quantità: " + quantita + "\n";
 	}
 
-	public void FaiOrdine() {
+	public void faiOrdine() {
 		ArrayList<Ordini> ordine = new ArrayList<>();
 		List<String> listaPanino = new ArrayList<>();
 		Ordini ordineParz;
