@@ -25,11 +25,11 @@ public class MainDb {
 	        listaClienti.add(client3);
 	*/    
 	        //popolo classe da file:
-	        Client cliente= new Client();
+	 /*       Client cliente= new Client();
 	        List<Client> listaClienti=new ArrayList<>();
 	        listaClienti=cliente.getClientFromFile();
 	        Client.populateClientBatchFromFile(listaClienti);
-	        
+	   */     
 	        
 	       GestioneCliente gestioneCliente = new GestioneCliente();
 	        Ordini ordine = new Ordini();
@@ -38,7 +38,7 @@ public class MainDb {
 	       gestioneCliente.logIn();
 	        
 	       //faccio l'ordine 
-	        ordine.faiOrdine();
+	//        ordine.faiOrdine();
 	        //richiamo metodo check indirizzo
 	        gestioneCliente.checkAddress();
 	     

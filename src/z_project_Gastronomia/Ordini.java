@@ -8,6 +8,7 @@ public class Ordini {
 	private String nome;
 	private int quantita;
 
+	
 	Scanner scanner = new Scanner(System.in);
 
 	public Ordini() {
@@ -42,17 +43,12 @@ public class Ordini {
 	public void faiOrdine() {
 		ArrayList<Ordini> ordine = new ArrayList<>();
 		List<String> listaPanino = new ArrayList<>();
+		Ordini checkInput=new Ordini();;
 		Ordini ordineParz;
 		String answer;
 		System.out.println("Vuoi fare un nuovo ordine? si/no ");
-		do {
-			answer = scanner.nextLine().trim();
-			if (!answer.equalsIgnoreCase("si") && !answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) {
-				System.out
-						.println("Hai inserito un comando non corretto, Riprova.\n\nVuoi fare un nuovo ordine? si/no ");
-				answer = scanner.nextLine().trim();
-			}
-		} while (!answer.equalsIgnoreCase("si") && !answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
+		answer = scanner.nextLine().trim();
+		answer=checkInput.checkInput3(answer, "si","yes", "no");
 
 		if (answer.equalsIgnoreCase("no")) {
 			System.out.println("Grazie per essere passato di qua..\nA presto!");
@@ -64,12 +60,24 @@ public class Ordini {
 				if (tipo.equalsIgnoreCase("Carne")) {
 					System.out.println("Che tipo di " + tipo + " desidera? RoastBeef, Pollo grigliato o Tacchino? ");
 					nome = scanner.nextLine().trim();
+					nome= checkInput.checkInput3(nome,"roastbeef", "pollo grigliato", "Tacchino arrosto");
+					if(nome.equals("")) {
+						break;
+					}
 				} else if (tipo.equalsIgnoreCase("Insalata")) {
 					System.out.println("Che tipo di " + tipo + " desidera? Mista o Verde? ");
 					nome = scanner.nextLine().trim();
+					nome= checkInput.checkInput3(nome,"Mista", "Tonno", "Mediterranea");
+					if(nome.equals("")) {
+						break;
+					}
 				} else if (tipo.equalsIgnoreCase("Primo")) {
 					System.out.println("Che tipo di " + tipo + " desidera? Penne al ragù o penne al pesto? ");
 					nome = scanner.nextLine().trim();
+					nome= checkInput.checkInput3(nome,"Penne al ragù", "Penne al pesto", "Lasagne");
+					if(nome.equals("")) {
+						break;
+					}
 				} else if (tipo.equalsIgnoreCase("Panino")) {
 					nome = tipo;
 					String ingrediente;
@@ -98,7 +106,6 @@ public class Ordini {
 						}
 					} while (!tipo.equalsIgnoreCase("carne") && !tipo.equalsIgnoreCase("insalata")
 							&& !tipo.equalsIgnoreCase("primo") && !tipo.equalsIgnoreCase("panino"));
-
 				}
 
 				System.out.println("Quante porzioni desidera? Indicare un numero da 1 a 10 ");
@@ -122,13 +129,56 @@ public class Ordini {
 					break;
 				}
 			}
-
-		}
-		System.out.println("Il tuo ordine:\n");
-		for (int i = 0; i < ordine.size(); i++) {
-			System.out.println(ordine.get(i));
+			if(!ordine.isEmpty()) {
+			System.out.println("Il tuo ordine:\n");
+			for (int i = 0; i < ordine.size(); i++) {
+				System.out.println(ordine.get(i));
+			}
+			}
 		}
 		return;
 	}
 
+	
+	
+	private String checkInput3(String input, String nome1, String nome2, String nome3){
+		//String prodotto;
+		do {
+		if (!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3)) {
+			System.out.println("Per favore dai una risposta corretta o premi invio per uscire.\n"
+					+ " " + nome1+ ", " + nome2 + " o  " + nome3+ " ? ");
+			input= scanner.nextLine();
+			if(input.equals("")) {
+				System.out.println("Hai scelto di non ordinare. Alla prossima.");
+				break;
+			}
+		}
+	
+		}while((!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3)));
+	
+	
+	return input;
+	}
+	
+	private String checkInput3(String input, String nome1, String nome2){
+		//String prodotto;
+		do {
+		if (!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) ) {
+			System.out.println("Per favore dai una risposta corretta o premi invio per uscire.\n"
+					+ " " + nome1+ ", " + nome2 +" ?");
+			input= scanner.nextLine();
+			if(input.equals("")) {
+				System.out.println("Hai scelto di uscire dall'applicazione. Alla prossima.");
+				break;
+			}
+		}
+	
+		}while((!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2)));
+	
+	
+	return input;
+	}
+	
+	
+	
 }
