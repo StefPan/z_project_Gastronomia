@@ -36,12 +36,12 @@ public class Client {
 	
 	public Client() {};
 	
-	public Client(String name, String surname, String address,String userName, String password, Integer cap, String city) {
+	public Client(String name, String surname, String userName, String password,String address, Integer cap, String city) {
 		this.name = name;
 		this.surname = surname;
-		this.address = address;
 		this.userName= userName;
 		this.password= password;
+		this.address = address;
 		this.cap = cap;
 		this.city = city;
 	}
@@ -49,9 +49,9 @@ public class Client {
 		this.idClient = idClient;
 		this.name = name;
 		this.surname = surname;
-		this.address = address;
 		this.userName= userName;
 		this.password= password;
+		this.address = address;
 		this.cap = cap;
 		this.city = city;
 	}
@@ -126,8 +126,8 @@ public class Client {
 	}
 
 	public String toString() {
-		return "Cliente:\nNome: " + name+ " Surname: "+ surname + " Address: " + address
-				+ " Email: " + userName + " Cap: " + cap + " City: "+ city ;
+		return "Client:\n" + name+ " "+ surname + " Email: " + userName +
+				 " Address: " + address + ", " + cap + ", "+ city ;
 	}
 	
 	public List<Client> getClientFromFile() throws IOException {
@@ -199,16 +199,16 @@ public class Client {
 		try {
 			connection = DriverManager.getConnection(URL, USER, PASSWORD);
 			Statement statement= connection.createStatement();
-			PreparedStatement prestat= connection.prepareCall("INSERT INTO clienti(nome, cognome, indirizzo, email, passwrd, cap, citta)"
+			PreparedStatement prestat= connection.prepareCall("INSERT INTO clienti(nome, cognome, email, passwrd, indirizzo, cap, citta)"
 					+ "VALUES(?,?,?,?,?,?,?)");
 			
 			for(int i =0; i< listaClienti.size();i++) {
 				Client cliente = listaClienti.get(i);
 				prestat.setString(1, cliente.getName());
 				prestat.setString(2, cliente.getSurname());
-				prestat.setString(3, cliente.getAddress());
-				prestat.setString(4, cliente.getUserName());
-				prestat.setString(5, cliente.getPassword());
+				prestat.setString(3, cliente.getUserName());
+				prestat.setString(4, cliente.getPassword());
+				prestat.setString(5, cliente.getAddress());
 				prestat.setInt(6,cliente.getCap());
 				prestat.setString(7, cliente.getCity());
 				prestat.addBatch();
@@ -224,8 +224,9 @@ public class Client {
 			while(leggoTable.next()) {
 				System.out.println("Cliente: Nome: "+ leggoTable.getString("nome")+""
 					+ " Cognome: " + leggoTable.getString("cognome") + ""
+					+" User: " + leggoTable.getString("email") + " " 
 					+ " Indirizzo: " + leggoTable.getString("indirizzo")+" "
-					+" User: " + leggoTable.getString("email") + " " + " Cap: " + leggoTable.getInt("Cap")
+					+ " Cap: " + leggoTable.getInt("Cap")
 					+" " + " Città: " + leggoTable.getString("citta"));
 			}
 			
@@ -237,6 +238,85 @@ public class Client {
 			e.printStackTrace();
 		}
 	}
+
+public  void populateClientBatch(Client cliente) throws SQLException{
+		 
+		
+		Connection connection = null;
+ 
+		try {
+			connection = DriverManager.getConnection(URL, USER, PASSWORD);
+			Statement statement= connection.createStatement();
+			PreparedStatement prestat= connection.prepareCall("INSERT INTO clienti(nome, cognome,  email, passwrd, indirizzo, cap, citta)"
+					+ "VALUES(?,?,?,?,?,?,?)");
+			
+			
+				prestat.setString(1, cliente.getName());
+				prestat.setString(2, cliente.getSurname());
+				prestat.setString(3, cliente.getUserName());
+				prestat.setString(4, cliente.getPassword());
+				prestat.setString(5, cliente.getAddress());
+				prestat.setInt(6,cliente.getCap());
+				prestat.setString(7, cliente.getCity());
+				prestat.addBatch();
+					
+			prestat.executeBatch();
+			
+			prestat.close();
+			
+			
+			ResultSet leggoTable = statement.executeQuery("SELECT * FROM clienti WHERE email= \" " +cliente.getUserName() + " \";");
+			
+			System.out.println("Registrazione completata.");
+			
+		/*	while(leggoTable.next()) {
+				System.out.println("Cliente: Nome: "+ leggoTable.getString("nome")+""
+					+ " Cognome: " + leggoTable.getString("cognome") + ""
+					+ " User: " + leggoTable.getString("email") +" " 
+					+ " Indirizzo: " + leggoTable.getString("indirizzo")+" "
+					+ " Cap: " + leggoTable.getInt("Cap")+ " "
+					+ " Città: " + leggoTable.getString("citta"));
+			}
+		*/	
+			connection.close();
+		
+			
+
+		} catch  (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+public  void resultSetSingolo(String email) throws SQLException{
+	 
+	
+	Connection connection = null;
+
+	try {
+		connection = DriverManager.getConnection(URL, USER, PASSWORD);
+		Statement statement= connection.createStatement();
+
+		ResultSet leggoTable = statement.executeQuery("SELECT * FROM clienti WHERE email = \""+ email +"\";");
+		
+
+		while(leggoTable.next()) {
+			System.out.println("Cliente: Nome: "+ leggoTable.getString("nome")+""
+				+ " Cognome: " + leggoTable.getString("cognome") + ""
+				+ " User: " + leggoTable.getString("email") +" " 
+				+ " Indirizzo: " + leggoTable.getString("indirizzo")+" "
+				+ " Cap: " + leggoTable.getInt("Cap")+ " "
+				+ " Città: " + leggoTable.getString("citta"));
+		}
+		
+		connection.close();
+	
+		
+
+	} catch  (SQLException e) {
+		e.printStackTrace();
+	}
+}
 
 
 

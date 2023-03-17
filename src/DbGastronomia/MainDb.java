@@ -25,17 +25,21 @@ public class MainDb {
 	        listaClienti.add(client3);
 	*/    
 	        //popolo classe da file:
-	 /*       Client cliente= new Client();
-	        List<Client> listaClienti=new ArrayList<>();
+	        Client cliente= new Client();
+	 /*       List<Client> listaClienti=new ArrayList<>();
 	        listaClienti=cliente.getClientFromFile();
 	        Client.populateClientBatchFromFile(listaClienti);
 	   */     
 	        
 	       GestioneCliente gestioneCliente = new GestioneCliente();
 	        Ordini ordine = new Ordini();
-	        
-	       //faccio il login, che in automatico richiama il metodo subscribe 
+	 //CONTROLLO SELECT SU SINGOLO CLIENTE       
+	 //   cliente.resultSetSingolo("stefanialorenz@gmail.com");
+	 
+	        //faccio il login, che in automatico richiama il metodo subscribe 
 	       gestioneCliente.logIn();
+	
+	        
 	        
 	       //faccio l'ordine 
 	//        ordine.faiOrdine();

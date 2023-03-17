@@ -48,7 +48,7 @@ public class Ordini {
 		String answer;
 		System.out.println("Vuoi fare un nuovo ordine? si/no ");
 		answer = scanner.nextLine().trim();
-		answer=checkInput.checkInput3(answer, "si","yes", "no");
+		answer=checkInput.checkInput(answer, "si","yes", "no");
 
 		if (answer.equalsIgnoreCase("no")) {
 			System.out.println("Grazie per essere passato di qua..\nA presto!");
@@ -57,24 +57,25 @@ public class Ordini {
 			while (true) {
 				System.out.println("Cosa vuole ordinare: Carne, Insalata, Primo o Panino?");
 				String tipo = scanner.nextLine();
+				tipo=checkInput.checkInput(tipo,"carne","insalata", "primo","panino");
 				if (tipo.equalsIgnoreCase("Carne")) {
 					System.out.println("Che tipo di " + tipo + " desidera? RoastBeef, Pollo grigliato o Tacchino? ");
 					nome = scanner.nextLine().trim();
-					nome= checkInput.checkInput3(nome,"roastbeef", "pollo grigliato", "Tacchino arrosto");
+					nome= checkInput.checkInput(nome,"roastbeef", "pollo grigliato", "Tacchino arrosto");
 					if(nome.equals("")) {
 						break;
 					}
 				} else if (tipo.equalsIgnoreCase("Insalata")) {
 					System.out.println("Che tipo di " + tipo + " desidera? Mista o Verde? ");
 					nome = scanner.nextLine().trim();
-					nome= checkInput.checkInput3(nome,"Mista", "Tonno", "Mediterranea");
+					nome= checkInput.checkInput(nome,"Mista", "Tonno", "Mediterranea");
 					if(nome.equals("")) {
 						break;
 					}
 				} else if (tipo.equalsIgnoreCase("Primo")) {
 					System.out.println("Che tipo di " + tipo + " desidera? Penne al ragù o penne al pesto? ");
 					nome = scanner.nextLine().trim();
-					nome= checkInput.checkInput3(nome,"Penne al ragù", "Penne al pesto", "Lasagne");
+					nome= checkInput.checkInput(nome,"Penne al ragù", "Penne al pesto", "Lasagne");
 					if(nome.equals("")) {
 						break;
 					}
@@ -92,7 +93,7 @@ public class Ordini {
 						ingrediente = scanner.nextLine();
 						listaPanino.add(ingrediente);
 					}
-					System.out.println(listaPanino);
+					System.out.println("Panino con: " + listaPanino);
 				}
 
 				else {
@@ -136,12 +137,34 @@ public class Ordini {
 			}
 			}
 		}
-		return;
+	
 	}
 
 	
+	/*controllo risposta del cliente fino a che non è si/no
+	 *  o tra quelle predefinite o esce dal programma 
+	*/
+	public String checkInput(String input, String nome1, String nome2, String nome3,String nome4){
+		//String prodotto;
+		do {
+		if (!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3) && !input.equalsIgnoreCase(nome4)) {
+			System.out.println("Per favore dai una risposta corretta o premi invio per uscire.\n"
+					+ " " + nome1+ ", " + nome2 + ", " + nome3+ " o " + nome4 + " ? ");
+			input= scanner.nextLine();
+			if(input.equals("")) {
+				System.out.println("Hai scelto di uscire dall'applicazione. Alla prossima.");
+				break;
+			}
+		}
 	
-	private String checkInput3(String input, String nome1, String nome2, String nome3){
+		}while((!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3) && !input.equalsIgnoreCase(nome4)));
+	
+	
+	return input;
+	}
+	
+	
+	public String checkInput(String input, String nome1, String nome2, String nome3){
 		//String prodotto;
 		do {
 		if (!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3)) {
@@ -149,23 +172,22 @@ public class Ordini {
 					+ " " + nome1+ ", " + nome2 + " o  " + nome3+ " ? ");
 			input= scanner.nextLine();
 			if(input.equals("")) {
-				System.out.println("Hai scelto di non ordinare. Alla prossima.");
+				System.out.println("Hai scelto di uscire dall'applicazione. Alla prossima.");
 				break;
 			}
 		}
 	
 		}while((!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3)));
-	
-	
-	return input;
+		return input;
 	}
+
 	
-	private String checkInput3(String input, String nome1, String nome2){
+	public String checkInput(String input, String nome1, String nome2){
 		//String prodotto;
 		do {
 		if (!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) ) {
 			System.out.println("Per favore dai una risposta corretta o premi invio per uscire.\n"
-					+ " " + nome1+ ", " + nome2 +" ?");
+					+ " " + nome1+ "/" + nome2 +" ?");
 			input= scanner.nextLine();
 			if(input.equals("")) {
 				System.out.println("Hai scelto di uscire dall'applicazione. Alla prossima.");
