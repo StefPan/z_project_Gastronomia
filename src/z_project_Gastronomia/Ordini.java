@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Ordini {
 	private String nome;
 	private int quantita;
-
+	private Panino panino;
 	
 	Scanner scanner = new Scanner(System.in);
 
@@ -18,6 +18,13 @@ public class Ordini {
 		this.nome = nome;
 		this.quantita = quantita;
 	}
+	
+	//CREA CLASSE Panino list<PAnino> e assegnio ordineParz= add(Panino, quantità
+	public Ordini(Panino panino, int quantita) {
+		this.panino = panino;
+		this.quantita = quantita;
+	}
+
 
 	public String getNome() {
 		return nome;
@@ -41,9 +48,10 @@ public class Ordini {
 	}
 
 	public void faiOrdine() {
+	
 		ArrayList<Ordini> ordine = new ArrayList<>();
-		List<String> listaPanino = new ArrayList<>();
-		Ordini checkInput=new Ordini();;
+		List<Panino> listaPanino = new ArrayList<>();
+		Ordini checkInput=new Ordini();
 		Ordini ordineParz;
 		String answer;
 		System.out.println("Vuoi fare un nuovo ordine? si/no ");
@@ -82,15 +90,18 @@ public class Ordini {
 				} else if (tipo.equalsIgnoreCase("Panino")) {
 					nome = tipo;
 					String ingrediente;
-
+					Panino ingrd=new Panino(nome);
 					System.out.println("Inserisca il primo ingrediente ? ");
 					ingrediente = scanner.nextLine().trim();
-
+	//fai in modo che inserisco stringhe dentro panino..
+					//modifica sopra anche ci stache non va bene, o nella classe panino..
 					listaPanino.add(ingrediente);
 
 					while (ingrediente != "") {
 						System.out.println("Inserisca un'altro ingrediente o prema invio ? ");
 						ingrediente = scanner.nextLine();
+						listaPanino.add("Panino");
+						
 						listaPanino.add(ingrediente);
 					}
 					System.out.println("Panino con: " + listaPanino);
@@ -112,7 +123,11 @@ public class Ordini {
 				System.out.println("Quante porzioni desidera? Indicare un numero da 1 a 10 ");
 				int quantita = scanner.nextInt();
 				scanner.nextLine();
+				if (tipo.equalsIgnoreCase("panino")) {
+					
+				}
 				ordineParz = new Ordini(nome, quantita);
+		//		ordineParz= new Ordini();
 				ordine.add(ordineParz);
 				System.out.println("Desideri altro? si/no ");
 

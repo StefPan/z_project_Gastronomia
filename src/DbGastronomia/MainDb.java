@@ -37,9 +37,9 @@ public class MainDb {
 	 //   cliente.resultSetSingolo("stefanialorenz@gmail.com");
 	 
 	        //faccio il login, che in automatico richiama il metodo subscribe 
-	       gestioneCliente.logIn();
+	//       gestioneCliente.logIn();
 	
-	        
+	        ordine.faiOrdine();
 	        
 	       //faccio l'ordine 
 	//        ordine.faiOrdine();
