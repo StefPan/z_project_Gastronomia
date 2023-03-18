@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Ordini {
 	private String nome;
 	private int quantita;
-	private Panino panino;
+//	private PaninoComposite panino;
 	
 	Scanner scanner = new Scanner(System.in);
 
@@ -19,9 +19,9 @@ public class Ordini {
 		this.quantita = quantita;
 	}
 	
-	//CREA CLASSE Panino list<PAnino> e assegnio ordineParz= add(Panino, quantità
-	public Ordini(Panino panino, int quantita) {
-		this.panino = panino;
+	//CREA CLASSE PaninoComposite list<Panino> e assegno ordineParz= add(PaninoComposite, quantità
+	public Ordini(PaninoComposite panino, int quantita) {
+//		this.panino = panino;
 		this.quantita = quantita;
 	}
 
@@ -44,16 +44,19 @@ public class Ordini {
 
 	@Override
 	public String toString() {
-		return "Prodotto: " + nome + " quantità: " + quantita + "\n";
+		
+		return  ("-) " + nome + " quantità: " + quantita + "\n");
 	}
 
 	public void faiOrdine() {
 	
 		ArrayList<Ordini> ordine = new ArrayList<>();
-		List<Panino> listaPanino = new ArrayList<>();
-		Ordini checkInput=new Ordini();
-		Ordini ordineParz;
+		Ordini checkInput=new Ordini();//serve solo per richiemare
+		PaninoComposite ingrd=new PaninoComposite();
+		Ordini ordineParz= new Ordini();
+		Ordini ordinePanino;
 		String answer;
+		
 		System.out.println("Vuoi fare un nuovo ordine? si/no ");
 		answer = scanner.nextLine().trim();
 		answer=checkInput.checkInput(answer, "si","yes", "no");
@@ -90,21 +93,17 @@ public class Ordini {
 				} else if (tipo.equalsIgnoreCase("Panino")) {
 					nome = tipo;
 					String ingrediente;
-					Panino ingrd=new Panino(nome);
+					
 					System.out.println("Inserisca il primo ingrediente ? ");
 					ingrediente = scanner.nextLine().trim();
-	//fai in modo che inserisco stringhe dentro panino..
-					//modifica sopra anche ci stache non va bene, o nella classe panino..
-					listaPanino.add(ingrediente);
+					ingrd.addIngredienti(ingrediente);
 
 					while (ingrediente != "") {
 						System.out.println("Inserisca un'altro ingrediente o prema invio ? ");
 						ingrediente = scanner.nextLine();
-						listaPanino.add("Panino");
-						
-						listaPanino.add(ingrediente);
+						ingrd.addIngredienti(ingrediente);
 					}
-					System.out.println("Panino con: " + listaPanino);
+//					System.out.println("Panino con: " + ingrd);
 				}
 
 				else {
@@ -123,12 +122,15 @@ public class Ordini {
 				System.out.println("Quante porzioni desidera? Indicare un numero da 1 a 10 ");
 				int quantita = scanner.nextInt();
 				scanner.nextLine();
-				if (tipo.equalsIgnoreCase("panino")) {
-					
+				if (nome.equalsIgnoreCase("panino")) {
+					ordinePanino= new Ordini(ingrd.getIngrediente(), quantita);
+					ordine.add(ordinePanino);
 				}
+				else {
 				ordineParz = new Ordini(nome, quantita);
-		//		ordineParz= new Ordini();
 				ordine.add(ordineParz);
+				}
+				
 				System.out.println("Desideri altro? si/no ");
 
 				do {
@@ -149,6 +151,13 @@ public class Ordini {
 			System.out.println("Il tuo ordine:\n");
 			for (int i = 0; i < ordine.size(); i++) {
 				System.out.println(ordine.get(i));
+			}
+			if(!ingrd.getListaIngredienti().isEmpty()){
+				System.out.println("Ingedienti del panino: ");
+				for(String ingred:ingrd.getListaIngredienti()) {
+					System.out.print(" "+ ingred);
+				}
+				
 			}
 			}
 		}
