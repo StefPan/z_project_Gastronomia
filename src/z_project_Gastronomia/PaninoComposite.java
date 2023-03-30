@@ -5,34 +5,35 @@ import java.util.List;
 
 public class PaninoComposite {
 
-	private String ingrediente;
-	private List<String> listaIngredienti;
+	private String ingredient;
+	private List<String> ingredientsList;
 	
 	public PaninoComposite() {
-		this.ingrediente = "panino";
-		listaIngredienti = new ArrayList<>();
+		this.ingredient = "panino";
+		ingredientsList = new ArrayList<>();
 	}
 	
 	
 	public String getIngrediente() {
-		return ingrediente;
+		return ingredient;
 	}
 
 
 	public void setIngrediente(String ingrediente) {
-		this.ingrediente = ingrediente;
+		this.ingredient = ingrediente;
 	}
 
 
 	public void addIngredienti(String ingrediente) {
-		listaIngredienti.add(ingrediente);
+		ingredientsList.add(ingrediente);
 	}
 	
-	public List<String> getListaIngredienti() {
-		return listaIngredienti;
+	
+	public List<String> getIngredientsList() {
+		return ingredientsList;
 	}
 	
 	public String toString() {
-		return ingrediente + "; ";
+		return ingredient + "; ";
 	}
 }

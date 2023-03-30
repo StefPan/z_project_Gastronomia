@@ -53,7 +53,7 @@ public class Ordini {
 	public void faiOrdine() {
 
 		ArrayList<Ordini> ordine = new ArrayList<>();
-		PaninoComposite ingrd = new PaninoComposite();
+		PaninoComposite ingredientiPanino = new PaninoComposite();
 		Ordini ordineParz = new Ordini();
 		Ordini ordinePanino;
 		String answer;
@@ -78,9 +78,9 @@ public class Ordini {
 						break;
 					}
 				} else if (tipo.equalsIgnoreCase("Insalata")) {
-					System.out.println("Che tipo di " + tipo + " desidera? Mista o Verde? ");
+					System.out.println("Che tipo di " + tipo + " desidera? Insalata Mista, Insalata al tonno o Insalata Mediterranea? ");
 					nome = scanner.nextLine().trim();
-					nome = checkInput(nome, "Mista", "Tonno", "Mediterranea");
+					nome = checkInput(nome, "Insalata Mista", "Insalata con Tonno", "Insalata Mediterranea");
 					if (nome.equals("")) {
 						break;
 					}
@@ -97,12 +97,12 @@ public class Ordini {
 
 					System.out.println("Inserisca il primo ingrediente ? ");
 					ingrediente = scanner.nextLine().trim();
-					ingrd.addIngredienti(ingrediente);
+					ingredientiPanino.addIngredienti(ingrediente);
 
 					while (ingrediente != "") {
 						System.out.println("Inserisca un'altro ingrediente o prema invio ? ");
 						ingrediente = scanner.nextLine();
-						ingrd.addIngredienti(ingrediente);
+						ingredientiPanino.addIngredienti(ingrediente);
 					}
 //					System.out.println("Panino con: " + ingrd);
 				}
@@ -124,7 +124,7 @@ public class Ordini {
 				int quantita = scanner.nextInt();
 				scanner.nextLine();
 				if (nome.equalsIgnoreCase("panino")) {
-					ordinePanino = new Ordini(ingrd.getIngrediente(), quantita);
+					ordinePanino = new Ordini(ingredientiPanino.getIngrediente(), quantita);
 					ordine.add(ordinePanino);
 				} else {
 					ordineParz = new Ordini(nome, quantita);
@@ -156,26 +156,27 @@ public class Ordini {
 					System.out.println(ordine.get(i));
 				}
 				// SE HO PANINO STAMPA INGREDIENTI PANINO
-				if (!ingrd.getListaIngredienti().isEmpty()) {
+				if (!ingredientiPanino.getIngredientsList().isEmpty()) {
 					System.out.println("Ingedienti del panino: ");
-					for (String ingred : ingrd.getListaIngredienti()) {
+					for (String ingred : ingredientiPanino.getIngredientsList()) {
 						System.out.print(" " + ingred);
 					}
 				}
-				System.out.print("Desideri la consegna a domicilio?");
+			/*	System.out.print("Desideri la consegna a domicilio?");
 				answer=scanner.nextLine();
 				answer=checkInput(answer, "si", "no");
-				if(answer.equalsIgnoreCase("no")){
-					System.out.print("Ok.\nIl tuo ordine sarà pronto tra " + time + " minuti");
-					//dichiara time che lo calcolereai in cucina, nella gestione ordini totali
+				if(answer.equalsIgnoreCase("si")){
+		//			System.out.print("Ok.\nIl tuo ordine sarà pronto tra " + time + " minuti");
+		//TODO dichiara time che lo calcolereai in cucina, nella gestione ordini totali
 					//metti il caso sì che fa controllo da database se indirizzo corretto.
-				}
+				}*/
 			}
 		}
 	}
 
-	/*
-	 * controllo risposta del cliente fino a che non è si/no o tra quelle
+	
+	
+	/* controllo risposta del cliente fino a che non è tra quelle
 	 * predefinite o esce dal programma
 	 */
 	public String checkInput(String input, String nome1, String nome2, String nome3, String nome4) {
@@ -190,13 +191,13 @@ public class Ordini {
 					break;
 				}
 			}
-
 		} while ((!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3)
 				&& !input.equalsIgnoreCase(nome4)));
 
 		return input;
 	}
 
+	
 	public String checkInput(String input, String nome1, String nome2, String nome3) {
 		do {
 			if (!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3)) {
@@ -208,11 +209,11 @@ public class Ordini {
 					break;
 				}
 			}
-
 		} while ((!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2) && !input.equalsIgnoreCase(nome3)));
 		return input;
 	}
 
+	
 	public String checkInput(String input, String nome1, String nome2) {
 		do {
 			if (!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2)) {
@@ -224,7 +225,6 @@ public class Ordini {
 					break;
 				}
 			}
-
 		} while ((!input.equalsIgnoreCase(nome1) && !input.equalsIgnoreCase(nome2)));
 
 		return input;

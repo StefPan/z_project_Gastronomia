@@ -1,4 +1,4 @@
-package DbGastronomia;
+package db.gastronomia;
 
 
 import java.io.IOException;
@@ -24,27 +24,31 @@ public class MainDb {
 	        listaClienti.add(client2);
 	        listaClienti.add(client3);
 	*/    
-	        //popolo classe da file:
+	  
+	        
+	        //POPOLO CLASSE DA FILE:
 	        Client cliente= new Client();
 	 /*       List<Client> listaClienti=new ArrayList<>();
 	        listaClienti=cliente.getClientFromFile();
 	        Client.populateClientBatchFromFile(listaClienti);
 	   */     
 	        
-	       GestioneCliente gestioneCliente = new GestioneCliente();
+	       GestioneClient gestioneClient = new GestioneClient();
 	        Ordini ordine = new Ordini();
-	 //CONTROLLO SELECT SU SINGOLO CLIENTE       
+	
+	        //CONTROLLO SELECT SU SINGOLO CLIENTE       
 	 //   cliente.resultSetSingolo("stefanialorenz@gmail.com");
 	 
+	        
+	        
 	        //faccio il login, che in automatico richiama il metodo subscribe 
-	       gestioneCliente.logIn();
+	       gestioneClient.logIn();
 	
+	       
+	       
 	//        ordine.faiOrdine();
 	        
-	       //faccio l'ordine 
-	//        ordine.faiOrdine();
-	        //richiamo metodo check indirizzo
-	        gestioneCliente.checkAddress();
+	
 	     
 	        
 	        
@@ -55,7 +59,7 @@ public class MainDb {
 	         *  leggi nome cognome e indirizzo.  in caso non esiste il suo cod fiscale si registra,
 	         *   poi si procede all'ordine */
 	       
-	/*       UtilitiesMethods utility = new UtilitiesMethods();
+	/*       CrudClient utility = new CrudClient();
        
 	       utility.createClient();
 		    for(Client client: listaClienti) {
