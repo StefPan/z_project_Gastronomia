@@ -1,7 +1,7 @@
 package db.gastronomia;
 
 
-/*	
+	/*
 
 	@Entity
 	@Table(name = "food")
