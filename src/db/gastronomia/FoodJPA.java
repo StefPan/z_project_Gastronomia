@@ -22,36 +22,21 @@ package db.gastronomia;
 		@Column(name="porzioni")
 		private int porzioni;
 
+	
+				
 		
-		
-		
-		public int getId() {
-			return id;
-		}
-
-		
-		public void addArticle(ArticleEntity articleEntity) {
-			if(articleEntity.getAuthors() == null) {
-			articleEntity.setAuthors(new HashSet<>());
-			}
-			if(this.articles == null) {
-			this.articles = new HashSet<>();
-			}
-			articleEntity.getAuthors().add(this);
-			this.articles.add(articleEntity);
-			}
-			public void removeArticle(ArticleEntity articleEntity) {
-			this.articles.remove(articleEntity);
-			articleEntity.getAuthors().remove(this);
-			}
+			
 		public void addFood(FoodJpa foodJpa) {
 			foodJpa.setUserEntity(this);
 			if (this.cars == null) {
 				this.cars = new HashSet<>();
 			}
-			this.cars.add(carEntity);
+			this.cars.add(foodJpa);
 		}
 		
+		
+	
+			
 		@Override
 		public int hashCode() {
 			return super.hashCode();
@@ -63,7 +48,9 @@ package db.gastronomia;
 				return super.equals(obj);
 		}
 
-
+		public int getId() {
+			return id;
+		}
 		public String getFoodName() {
 			return foodName;
 		}
