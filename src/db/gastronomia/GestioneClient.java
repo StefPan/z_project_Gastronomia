@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.locks.ReentrantLock;
 
 import z_project_Gastronomia.Ordini;
 
@@ -17,6 +18,7 @@ public class GestioneClient {
 	 * "jdbc:mysql://localhost:3306/progettogastronomia"; private static final
 	 * String USER = "root"; private static final String PASSWORD = "13febbraio";
 	 */
+//	private ReentrantLock istanzaLock = new ReentrantLock();
 	ConnectionDb gestioneDb = new ConnectionDb();
 	private PojoClient data = new PojoClient();
 	private String answer;
@@ -24,8 +26,8 @@ public class GestioneClient {
 
 	Scanner scanner = new Scanner(System.in);
 
-	public void logIn() throws SQLException {
-
+	public  void logIn() throws SQLException {
+	
 		// Connection connection = null;
 		System.out.println("Inserisci il tuo indirizzo email o premi 1 se vuoi registrarti:");
 		answer = scanner.nextLine().trim();
@@ -98,6 +100,8 @@ public class GestioneClient {
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 
 	

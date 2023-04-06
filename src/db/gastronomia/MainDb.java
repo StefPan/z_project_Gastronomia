@@ -32,12 +32,18 @@ public class MainDb {
 	        listaClienti=cliente.getClientFromFile();
 	        Client.populateClientBatchFromFile(listaClienti);
 	   */     
-	        
+	      
 	       GestioneClient gestioneClient = new GestioneClient();
-	        Ordini ordine = new Ordini();
+/*	   PROVA THREAD SIPUò TOGLIERE NON UTILE
+			ClientThread thr1 = new ClientThread(gestioneClient); 
+	       ClientThread thr2 = new ClientThread(gestioneClient);
+	       thr1.start();
+	       thr2.start();
+	    */   
+	       Ordini ordine = new Ordini();
 	
 	        //CONTROLLO SELECT SU SINGOLO CLIENTE       
-	 //   cliente.resultSetSingolo("stefanialorenz@gmail.com");
+	   cliente.resultSetSingolo("stefanialorenz@gmail.com");
 	 
 	        
 	        
