@@ -34,12 +34,12 @@ public class MainDb {
 	   */     
 	      
 	       GestioneClient gestioneClient = new GestioneClient();
-/*	   PROVA THREAD SIPUò TOGLIERE NON UTILE
-			ClientThread thr1 = new ClientThread(gestioneClient); 
-	       ClientThread thr2 = new ClientThread(gestioneClient);
+//	   PROVA THREAD SIPUò TOGLIERE NON UTILE
+/*			ClientThread thr1 = new ClientThread(); 
+	       ClientThread thr2 = new ClientThread();
 	       thr1.start();
 	       thr2.start();
-	    */   
+*/	    
 	       Ordini ordine = new Ordini();
 	
 	        //CONTROLLO SELECT SU SINGOLO CLIENTE       
@@ -50,6 +50,9 @@ public class MainDb {
 	        //faccio il login, che in automatico richiama il metodo subscribe 
 	       gestioneClient.logIn();
 	
+	
+	       ClientiEntity clientA = new ClientiEntity(22l,"Rita", "Fine", "fine@gmail.com", "fretine", "Via Fiocchi, 4",51030, "Pistoia");
+	       clientA.insertClient(clientA);
 	       
 	       
 	//        ordine.faiOrdine();

@@ -1,1 +1,12 @@
 /bin/
+/target/
+hibernate.cfg.xml
+pom.xml
+bin/db/gastronomia/MainDb.class
+src/db/gastronomia/ClientThread.java
+src/db/gastronomia/MainDb.java
+bin/db/gastronomia/MainDb.class
+.settings/org.eclipse.m2e.core.prefs
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.core.resources.prefs
+.project

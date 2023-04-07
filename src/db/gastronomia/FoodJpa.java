@@ -1,11 +1,17 @@
 package db.gastronomia;
 
+import java.util.HashSet;
 
-	/*
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 	@Entity
 	@Table(name = "food")
-	public class FoodJPA implement JpaEntity {
+	public class FoodJpa implements JpaEntity {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int id;
@@ -22,21 +28,10 @@ package db.gastronomia;
 		@Column(name="porzioni")
 		private int porzioni;
 
-	
-				
-		
-			
-		public void addFood(FoodJpa foodJpa) {
-			foodJpa.setUserEntity(this);
-			if (this.cars == null) {
-				this.cars = new HashSet<>();
-			}
-			this.cars.add(foodJpa);
-		}
 		
 		
-	
-			
+
+		
 		@Override
 		public int hashCode() {
 			return super.hashCode();
@@ -84,6 +79,7 @@ package db.gastronomia;
 		}
 		
 		
+		
+	
 	
 }
-*/
